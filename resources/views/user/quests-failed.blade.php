@@ -1,0 +1,33 @@
+@extends('layouts.user')
+
+@section('content')
+    <div class="container-fluid">
+        <div class="row mt-2">
+            <div class="col">
+                <div class="jumbotron">
+                    <p class="display-4">We knew it don't worry, look for more luck in the others quests looser...</p>
+                    @if(count($quests_failed))
+                        <div class="row justify-content-around">
+                            @foreach($quests_failed as $quest)
+                                <div class="card my-2 p-2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="/{{$quest->quest->avatar_full_url}}" alt="some quest photo" class="img-thumbnail">
+                                        </div>
+                                        <div class="col">
+                                            <p>{{$quest->quest->title}}</p>
+                                            <p>{{$quest->quest->short_description}}</p>
+                                            <a href="{{route('quest.show', [$quest->quest->author_name,$quest->quest->title])}}" class="btn btn-primary">Find more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="h1 text-center">There are no any quest you failed yet!</p>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
