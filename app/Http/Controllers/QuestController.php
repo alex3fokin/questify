@@ -95,7 +95,7 @@ class QuestController extends Controller
                 $quest_folder = env('QUEST_FOLDER');
                 $saved_photo = $request->file('photo')->store($quest_folder);
                 $saved_photo = substr($saved_photo, strrpos($saved_photo, '/') + 1);
-                if ($quest->photo) {
+                if ($quest->photo !== "default.png") {
                     Storage::delete($quest_folder . '/' . $quest->photo);
                 }
                 $quest->title = $request->title;

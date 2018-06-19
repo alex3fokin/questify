@@ -53,7 +53,7 @@ class UserController extends Controller
             $avatar_folder = env('AVATAR_FOLDER');
             $saved_avatar = $request->file('photo')->store($avatar_folder);
             $saved_avatar = substr($saved_avatar, strrpos($saved_avatar, '/') + 1);
-            if ($user->photo) {
+            if ($user->photo !== "default.png") {
                 Storage::delete($avatar_folder . '/' . $user->photo);
             }
             $user->email = $request->email;

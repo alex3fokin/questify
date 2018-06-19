@@ -19,7 +19,7 @@ class CreateQuestsTable extends Migration
             $table->string('short_description');
             $table->text('description');
             $table->string('answer');
-            $table->string('photo')->nullable();
+            $table->string('photo')->default('default.png');
             $table->integer('execution_time');
             $table->integer('author_id')->unsigned();
             $table->integer('rating')->default(0);
